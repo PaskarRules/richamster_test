@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+</head>
+<body>
+    <h1>Добро пожаловать в документацию нашего API</h1>
+    <p>Вы можете воспользоваться готовым REST API для работы с объявлениями. Ниже приведены доступные методы:</p>
+    <ul>
+        <li><strong>GET "api/announcement/"</strong> - вернет все записи и информацию о них.</li>
+        <li><strong>POST "api/announcement/"</strong> - создает новую запись. Необходимо предоставить в теле запроса 'user_id', 'title', 'description'. Для выполнения этого действия требуется аутентификация как администратор (введите логин и пароль администратора).</li>
+        <li><strong>POST "api/announcement/&lt;announcement_id&gt;/like"</strong> - поставит лайк записи или заберёт лайк, если применить повторно.</li>
+        <li><strong>GET "api/announcement/&lt;announcement_id&gt;/"</strong> - возвращает информацию о конкретной записи.</li>
+        <li><strong>PUT "api/announcement/&lt;announcement_id&gt;/"</strong> - обновляет запись с данным ID. Необходимо отправить все данные записи.</li>
+        <li><strong>PATCH "api/announcement/&lt;announcement_id&gt;/"</strong> - частично обновляет запись с данным ID. Можно отправить только изменяемые поля.</li>
+        <li><strong>DELETE "api/announcement/&lt;announcement_id&gt;/"</strong> - удаляет запись с данным ID.</li>
+    </ul>
+</body>
+</html>
