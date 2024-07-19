@@ -15,12 +15,27 @@ class Announcement(models.Model):
     def like_count(self):
         return self.like_set.filter(is_active=True).count()
 
+    @property
+    def dislike_count(self):
+        return self.dislike_set.filter(is_active=True).count()
 
-class Like(models.Model):
+
+class BaseReaction(models.Model):
     announcement = models.ForeignKey(Announcement, on_delete=models.CASCADE)
     user = models.CharField(max_length=255, blank=True, null=True)
     is_active = models.BooleanField(default=True)
     date = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        abstract = True
+
     def __str__(self):
         return f"{self.announcement.title} - {'Active' if self.is_active else 'Inactive'} by User {self.user}"
+
+
+class Like(BaseReaction):
+    pass
+
+
+class Dislike(BaseReaction):
+    pass
