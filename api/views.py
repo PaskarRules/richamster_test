@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser, AllowAny
-from rest_framework.pagination import PageNumberPagination
+from rest_framework.pagination import LimitOffsetPagination
 
 from .models import Announcement, Like, Dislike
 from .serializers import AnnouncementSerializer
@@ -16,7 +16,7 @@ def documentation(request):
 class AnnouncementViewSet(viewsets.ModelViewSet):
     queryset = Announcement.objects.all()
     serializer_class = AnnouncementSerializer
-    pagination_class = PageNumberPagination  # Explicitly set the pagination class
+    pagination_class = LimitOffsetPagination
 
     def get_permissions(self):
         """
