@@ -28,6 +28,15 @@ class AnnouncementViewSet(viewsets.ModelViewSet):
             permission_classes = [AllowAny]
         return [permission() for permission in permission_classes]
 
+    @action(detail=False, methods=['get'], permission_classes=[AllowAny])
+    def counter(self, request):
+        """
+        Return Announcement counter.
+        """
+        announcements_count = Announcement.objects.count()
+
+        return Response({'count': announcements_count})
+
     @action(detail=True, methods=['post'], permission_classes=[AllowAny])
     def like(self, request, pk=None):
         """
